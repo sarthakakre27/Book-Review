@@ -80,8 +80,9 @@ app.get("/books/:id", async (req, res, next) => {
     let book = await Book.findById(req.params.id).populate("reviews");
     if (!book) {
       //err message
+      throw new CustomError("No Book Found",404);
     }
-    res.render("books/show", { book });
+    res.render("books/show1", { book });
   } catch (err) {
     next(err);
   }
