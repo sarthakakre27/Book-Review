@@ -1,0 +1,65 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <h1 class="text-center">Edit book</h1>
+    <div class="col-6 offset-3">
+        <form action="/books/<%=book._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="book[title]"
+                    value="<%=book.title %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Author</label>
+                <input class="form-control" type="text" id="location" name="book[author]"
+                    value="<%=book.author %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image">Image Url</label>
+                <input class="form-control" type="text" id="image" name="book[image]"
+                    value="<%=book.image %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image">Best Purchase Url</label>
+                <input class="form-control" type="text" id="image" name="book[bestPurchaseLink]"
+                    value="<%=book.bestPurchaseLink %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">book Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                        aria-describedby="price-label" name="book[price]" value="<%=book.price %>"
+                        required><div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="description">About The Book</label>
+                <textarea class="form-control" type="text" id="description" name="book[about]"
+                    required><%= book.about %></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-info">Update book</button>
+            </div>
+        </form>
+        <a href="/books/<%= book._id%>">Back To The book</a>
+
+    </div>
+</div>
