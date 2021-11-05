@@ -24,6 +24,7 @@ app.engine("ejs", ejsMate);
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, 'assets')));
 
 const datavalidation_book = (req, res, next) => {
   const { error } = bookSchemaCheck.validate(req.body);
@@ -47,13 +48,14 @@ const datavalidation_bookReview = (req, res, next) => {
 };
 
 app.get("/", (req, res) => {
-  res.render("home");
+//   res.render("home");
+    res.render("home");
 });
 
 app.get("/books", async (req, res, next) => {
   try {
     let books = await Book.find({});
-    res.render("books/index.ejs", { books });
+    res.render("books/index1.ejs", { books });
   } catch (err) {
     next(err);
   }
