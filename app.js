@@ -78,12 +78,49 @@ app.post("/books", datavalidation_book, async (req, res, next) => {
 app.get("/books/:id", async (req, res, next) => {
   try {
     let book = await Book.findById(req.params.id).populate("reviews");
+    let books = await Book.find({});
+
+    let rev_1 = 0,rev_2 = 0,rev_3 = 0,rev_4 = 0,rev_5 = 0;
+    for(let review of book.reviews)
+    {
+      switch(review.rating)
+      {
+        case 1: {
+          rev_1 += 1;
+          break;
+        }
+        case 2: {
+          rev_2 += 1;
+          break;
+        }
+        case 3: {
+          rev_3 += 1;
+          break;
+        }
+        case 4: {
+          rev_4 += 1;
+          break;
+        }
+        case 5: {
+          rev_5 += 1;
+          break;
+        }
+      }
+    }
+    rev_1 = Math.floor((rev_1*100)/book.reviews.length);
+    rev_2 = Math.floor((rev_2*100)/book.reviews.length);
+    rev_3 = Math.floor((rev_3*100)/book.reviews.length);
+    rev_4 = Math.floor((rev_4*100)/book.reviews.length);
+    rev_5 = Math.floor((rev_5*100)/book.reviews.length);
+    // console.log("found book");
     if (!book) {
       //err message
+      // console.log("in not book");
       throw new CustomError("No Book Found",404);
     }
-    res.render("books/show1", { book });
+    res.render("books/show1", { book , books , rev_1, rev_2, rev_3, rev_4, rev_5});
   } catch (err) {
+    // console.log("in catch block");
     next(err);
   }
 });

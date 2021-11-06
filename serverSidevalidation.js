@@ -16,7 +16,8 @@ const bookSchemaCheck = joi.object({
 const bookReviewSchemaCheck = joi.object({
     review: joi.object({
         content: joi.string().required(),
-        rating: joi.number().required().min(0).max(5)
+        rating: joi.number().required().min(0).max(5),
+        username: joi.string().required()
     }).required()
 });
 
