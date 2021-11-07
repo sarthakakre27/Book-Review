@@ -63,7 +63,7 @@ app.get("/books", async (req, res, next) => {
 });
 
 app.get("/books/new", (req, res) => {
-  res.render("books/new1");
+  res.render("books/new2");
 });
 
 app.post("/books", datavalidation_book, async (req, res, next) => {
@@ -134,7 +134,7 @@ app.get("/books/:id/edit", async (req, res) => {
     if (!book) {
       //err message
     }
-    res.render("books/edit1", { book });
+    res.render("books/edit2", { book });
   } catch (err) {
     next(err);
   }
