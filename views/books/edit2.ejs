@@ -1,0 +1,58 @@
+<% layout('layouts/boilerplate1') %>
+<div class="book-form">
+    <div class="container">
+        <div class="header">
+            <h2>Update Book</h2>
+        </div>
+        <form id="form" class="form" action="/books/<%=book._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+            <div class="form-control">
+                <label for="username">Title</label>
+                <input type="text" placeholder="Ex: Agatha Christie's Peril at End House" id="title" name="book[title]" value="<%=book.title %>" required/>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="username">Author</label>
+                <input type="text" placeholder="Agatha Christie" id="author" name="book[author]" value="<%=book.author %>" required/>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="username">Image Url</label>
+                <input type="text" placeholder="Paste book cover url" id="image" name="book[image]" value="<%=book.image %>" required/>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="username">Best-Buy Url</label>
+                <input type="text" placeholder="Recommend a site" id="image-buy" name="book[bestPurchaseLink]" value="<%=book.bestPurchaseLink %>" required/>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control" id="form-price">
+                <label class="form-label" for="price">Book Price</label>
+                <span class="input-group-text" id="price-label">&#8377</span>
+                <input type="text" id="price" placeholder="0.00" aria-label="price"
+                    aria-describedby="price-label" name="book[price]" value="<%=book.price %>" required>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+
+            <div class="form-control form-price">
+                <label class="form-label" for="price">About The Book</label>
+                <textarea class="form-control" type="text" id="description" name="book[about]"
+                    required><%= book.about %></textarea>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <button id="book-btn" class="upadte-btn">Update Book</button>
+        </form>
+        <a id="back-to-book" href="/books/<%= book._id%>">Back To The book</a>
+    </div>
+</div>
