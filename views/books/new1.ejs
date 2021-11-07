@@ -1,0 +1,73 @@
+<% layout('layouts/boilerplate1') %>
+
+    <!-- Start Contact -->
+    <section class="container py-2">
+
+        <h1 class="col-12 h2 text-center text-primary pt-3">Add a New Book!</h1>
+        <h2 class="col-12 h4 text-center regular-400">Make it public to be Reviewed!</h2>
+        <p class="col-12 text-center text-muted pb-5 light-300">
+            How it works? <br>
+            You add a Book that you read recently with all the fields mentioned below,
+            people who have read this book leave their reviews on the book, which in turn helps
+            the people who have'nt read it to decide which one to read!
+        </p>
+
+            <!-- Start Contact Form -->
+            <div class="col-12 ">
+                <form class="contact-form row" method="post" action="/books" role="form">
+
+                    <div class="col-lg-6 mb-4">
+                        <div class="form-floating">
+                            <input type="text" class="form-control form-control-lg light-300" id="title" name="book[title]" placeholder="Title" spellcheck="false">
+                            <label for="title light-300">Title</label>
+                        </div>
+                    </div><!-- End Input Name -->
+
+                    <div class="col-lg-6 mb-4">
+                        <div class="form-floating">
+                            <input type="text" class="form-control form-control-lg light-300" id="author" name="book[author]" placeholder="Author" spellcheck="false">
+                            <label for="author light-300">Author</label>
+                        </div>
+                    </div><!-- End Input Email -->
+
+                    <div class="col-lg-6 mb-4">
+                        <div class="form-floating">
+                            <input type="text" class="form-control form-control-lg light-300" id="image" name="book[image]" placeholder="ImageLink" spellcheck="false">
+                            <label for="image light-300">Image Link</label>
+                        </div>
+                    </div><!-- End Input Phone -->
+
+                    <div class="col-lg-6 mb-4">
+                        <div class="form-floating">
+                            <input type="text" class="form-control form-control-lg light-300" id="bestPurchaseLink" name="book[bestPurchaseLink]" placeholder="Best Purchase Link" spellcheck="false">
+                            <label for="bestPurchaseLink light-300">Best Purchase Link</label>
+                        </div>
+                    </div><!-- End Input Company Name -->
+
+                    <div class="col-lg-6 offset-3">
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control form-control-lg light-300" id="price" placeholder="0.00" name="book[price]" spellcheck="false">
+                            <label for="price light-300">Price &#8377;</label>
+                        </div>
+                    </div><!-- End Input Subject -->
+
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <textarea rows="8" class="form-control light-300" placeholder="About(Excerpt)" id="about" name="book[about]" spellcheck="false"></textarea>
+                            <label for="about light-300">About</label>
+                        </div>
+                    </div><!-- End Textarea Message -->
+
+                    <div class="col-md-12 col-12 m-auto text-end">
+                        <button type="submit" class="btn btn-success rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Add a Book</button>
+                    </div>
+
+                </form>
+            </div>
+            <!-- End Contact Form -->
+
+
+        </div>
+    </section>
+    <!-- End Contact -->
+

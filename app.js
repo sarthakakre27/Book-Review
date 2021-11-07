@@ -30,6 +30,7 @@ const datavalidation_book = (req, res, next) => {
   const { error } = bookSchemaCheck.validate(req.body);
   if (error) {
     console.log("error in book validation\n");
+    console.log(error);
     throw new CustomError("error in Book Validation --> improper fields given",400);
   } else {
     next();
@@ -62,7 +63,7 @@ app.get("/books", async (req, res, next) => {
 });
 
 app.get("/books/new", (req, res) => {
-  res.render("books/new");
+  res.render("books/new1");
 });
 
 app.post("/books", datavalidation_book, async (req, res, next) => {
@@ -107,6 +108,8 @@ app.get("/books/:id", async (req, res, next) => {
         }
       }
     }
+    let avg_rating = (rev_1*1 + rev_2*2 + rev_3*3 + rev_4*4 + rev_5*5)/(book.reviews.length);
+    avg_rating = Math.floor(avg_rating*100)/100;
     rev_1 = Math.floor((rev_1*100)/book.reviews.length);
     rev_2 = Math.floor((rev_2*100)/book.reviews.length);
     rev_3 = Math.floor((rev_3*100)/book.reviews.length);
@@ -118,7 +121,7 @@ app.get("/books/:id", async (req, res, next) => {
       // console.log("in not book");
       throw new CustomError("No Book Found",404);
     }
-    res.render("books/show1", { book , books , rev_1, rev_2, rev_3, rev_4, rev_5});
+    res.render("books/show1", { book , books , rev_1, rev_2, rev_3, rev_4, rev_5, avg_rating});
   } catch (err) {
     // console.log("in catch block");
     next(err);
@@ -131,7 +134,7 @@ app.get("/books/:id/edit", async (req, res) => {
     if (!book) {
       //err message
     }
-    res.render("books/edit", { book });
+    res.render("books/edit1", { book });
   } catch (err) {
     next(err);
   }
