@@ -1,71 +1,83 @@
-const express = require("express");
-const path = require("path");
-const ejsMate = require("ejs-mate");
-const methodOverride = require("method-override");
-const mongoose = require("mongoose");
-const Book = require("./models/book");
-const BookReview = require("./models/bookReview");
-const book = require("./models/book");
-const joi = require("joi");
-const { bookSchemaCheck, bookReviewSchemaCheck } = require("./serverSidevalidation");
-const CustomError = require("./utils/CustomError");
 
-mongoose.connect("mongodb://localhost:27017/book-review");
+/*------------------------importing all the modules that are required for backend------------------------------*/
 
+const express = require("express"); //main framework for rendering, routing, etc.
+const path = require("path"); //to join path of the file with it's base location
+const ejsMate = require("ejs-mate"); //
+const methodOverride = require("method-override"); //for PUT / DELETE requests
+const mongoose = require("mongoose"); //for database connection
+const Book = require("./models/book"); //Book model in our database
+const BookReview = require("./models/bookReview"); //BookReview model in our database
+const joi = require("joi"); //for server side validations of the models
+const { bookSchemaCheck, bookReviewSchemaCheck } = require("./serverSidevalidation"); //requiring the validation schemas
+const CustomError = require("./utils/CustomError"); //for throwing our Custom Error
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------- Connect to database----------------------------------------------------------*/
+mongoose.connect("mongodb://localhost:27017/book-review"); //connecting to database
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
+db.on("error", console.error.bind(console, "connection error:")); //on db connection error print error message
 db.once("open", () => {
-  console.log("Database connected");
+  console.log("Database connected"); //on db connection success print connected
 });
+/*-------------------------------------------------------------------------------------------------------------*/
 
 const app = express();
-app.set("view engine", "ejs");
+app.set("view engine", "ejs"); //setting the front-end rendering to ejs(embedded JS)
 app.engine("ejs", ejsMate);
-app.set("views", path.join(__dirname, "views"));
-app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
-app.use(express.static(path.join(__dirname, 'assets')));
+app.set("views", path.join(__dirname, "views")); //for setting the absolute path of views dir
+app.use(express.urlencoded({ extended: true })); //for parsing the req body
+app.use(methodOverride("_method")); //for PUT / DELETE requests
+app.use(express.static(path.join(__dirname, 'assets'))); //serving the assests directory publicly
 
+//middleware for book Model validation
 const datavalidation_book = (req, res, next) => {
-  const { error } = bookSchemaCheck.validate(req.body);
+  const { error } = bookSchemaCheck.validate(req.body); //validating request body and returning error if any
+  //on a error log it to server console as well as throw CustomError to be handled and shown to the client
   if (error) {
     console.log("error in book validation\n");
     console.log(error);
-    throw new CustomError("error in Book Validation --> improper fields given",400);
+    throw new CustomError("error in Book Validation --> improper fields given", 400);
   } else {
-    next();
+    next(); //else go ahead
   }
 };
 
+//middleware for Book Review Model validation
 const datavalidation_bookReview = (req, res, next) => {
-  const { error } = bookReviewSchemaCheck.validate(req.body);
-  if (error) {
+  const { error } = bookReviewSchemaCheck.validate(req.body); //validating request body and returning error if any
+  if (error) { //on a error log it to server console as well as throw CustomError to be handled and shown to the client
     //err msg
     console.log("error in book validation\n");
     throw new CustomError("error in BookReview Validation --> improper fields given",400);
   } else {
-    next();
+    next(); //else go ahead
   }
 };
 
+// routes for the REST api
+
 app.get("/", (req, res) => {
-//   res.render("home");
-    res.render("home");
+    res.redirect("/books"); //redirect to home page /books
 });
 
+//READ page for viewing all the books
+// GET request
 app.get("/books", async (req, res, next) => {
   try {
-    let books = await Book.find({});
-    res.render("books/index1.ejs", { books });
-  } catch (err) {
-    next(err);
+    let books = await Book.find({}); //find all books from database
+    res.render("books/index2", { books }); //pass the array to render on index page
+  } catch (err) { // catch any errors in database data retrieval or page rendering
+    next(err); //call error handler middleware
   }
 });
 
+//GET request for form to render to accept a new Book
 app.get("/books/new", (req, res) => {
   res.render("books/new2");
 });
 
+//POST request to add a book
 app.post("/books", datavalidation_book, async (req, res, next) => {
   try {
     let book = new Book(req.body.book);
