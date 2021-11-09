@@ -61,17 +61,17 @@ a {
   color: #fff;
 }
 /* Home */
-#index_banner {
+/* #index_banner {
   background-image: url("./../img/banner-bg-01.jpg");
   background-position: center center;
   background-size: cover;
   height: 100%;
   min-height: 40vh;
   width: 100%;
-}
-#index_banner .carousel-item {
+} */
+/* #index_banner .carousel-item {
   min-height: 40vh;
-}
+} */
 #index_banner .carousel-control-prev i,
 #index_banner .carousel-control-next i {
   color: #6266ea !important;

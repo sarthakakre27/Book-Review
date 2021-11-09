@@ -266,7 +266,12 @@ body .book-form {
 }
 
 .image__description {
-  font-size: 1em;
+  font-size: 16px;
   margin-top: 0.25em;
   color: black;
+}
+
+#more-books {
+  font-size: 4rem;
+  font-weight: lighter;
 }
