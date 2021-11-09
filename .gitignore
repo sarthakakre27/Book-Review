@@ -1,4 +1,14 @@
 # .gitignore
 /node_modules/
 package-lock.json
-/assets/
+/assets/css/old/
+/assets/css/bootstrap.min.css
+/assets/css/boxicon.min.css
+/assets/css/custom4.css
+# /assets/css/custom1.css
+/assets/img/
+/assets/js/old/
+/assets/js/bootstrap.bundle.min.js
+/assets/js/custom1.js
+/assets/js/isotope.pkgd.js
+/assets/js/jquery.min.js
