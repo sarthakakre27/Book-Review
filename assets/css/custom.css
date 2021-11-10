@@ -275,3 +275,29 @@ body .book-form {
   font-size: 4rem;
   font-weight: lighter;
 }
+
+@media only screen and (max-width: 992px) {
+  #index-card-img{
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #index-card-img{
+    height: 300px;
+  }
+  #index-img-box{
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  #index-card-img{
+    height: 250px;
+    width: 250px;
+  }
+  #index-img-box{
+    height: 250px;
+    width: 250px;
+  }
+}
