@@ -105,8 +105,16 @@
                                 By ~ <%= books[i].author %> 
                             </p>
                             <div class="small-star">
-                                <div class="display-star-rating">
-                                    <p><span class="stars"><%= books[i].avgRating %></span></p>
+                                <div class="display-stars-overlay">
+                                    <p>
+                                        <span class="stars">
+                                            <% if(books[i].avgRating){ %> 
+                                                <%= books[i].avgRating %>
+                                            <% }else{ %>
+                                                0
+                                            <% } %> 
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -146,18 +154,16 @@
                                 <p class="image__description">
                                     By ~ <%= books[i].author %> 
                                 </p>
-                                <div class="small-star">
-                                    <div class="display-star-rating">
-                                        <p>
-                                            <span class="stars">
-                                                <% if(books[i].avgRating){ %> 
-                                                    <%= books[i].avgRating %>
-                                                <% }else{ %>
-                                                    0
-                                                <% } %> 
-                                            </span>
-                                        </p>
-                                    </div>
+                                <div class="display-stars-overlay">
+                                    <p>
+                                        <span class="stars">
+                                            <% if(books[i].avgRating){ %> 
+                                                <%= books[i].avgRating %>
+                                            <% }else{ %>
+                                                0
+                                            <% } %> 
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
