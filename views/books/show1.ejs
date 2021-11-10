@@ -1,34 +1,38 @@
 <% layout('layouts/boilerplate1')%>
 
     <!-- Start Work Sigle -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer></script>
+    <script src="/js/showPage.js" defer></script>
     <h1 class="text-center text-dark mt-3 mb-0 display-4"><%= book.title %> </h2>
     <section class="container py-5">
         <div class="row justify-content-start pb-4">
             <div class="col-lg-6">
-                <div id="templatemo-slide-link-target" class="card mb-3" style="width: 500px;">
-                    <img class="border rounded border-0" src="<%= book.image %> " alt="Card image cap" height="700px" width="500px">
+
+                <div class="card mb-3" style="width: 500px;">
+                    <img class="border rounded" src="<%= book.image %>" alt="Card image cap" height="700px" width="500px">
                 </div>
             </div>
             <div class="col-lg-6 align-self-center">
                 <section class="bg-white py-3">
                     <div class="container my-2">
             
-                        <h1 class="creative-heading h2 pb-3 font-start">Rating Statistics</h1>
-                        <h1 class="creative-heading h3 pb-3 text-muted font-start">Average Rating : <% if(avg_rating){ %>
+                        <h1 class="h2 pb-3">Rating Statistics</h1>
+                        <h1 class="h3 pb-3 text-muted">Average Rating : <% if(avg_rating){ %>
                             <%= avg_rating %> 
                         <% }else{ %> 
                             0
                         <% } %> 
                         </h1>
+                        
                         <% if(avg_rating){ %>
                             <div class="display-star-rating">
                                 <p class="text-center"><span class="stars"><%= avg_rating %> </span></p>
                             </div>
                         <% } %>
-                        <h1 class="creative-heading h3 pb-3 text-muted font-start">Total Ratings : <%= book.reviews.length %> </h1>
+                        <h1 class="h3 pb-3 text-muted font-start">Total Ratings : <%= book.reviews.length %> </h1>
             
-                        <div class="creative-content row py-3">
-                            <div class="creative-progress col-md-7">
+                        <div class="row py-3">
+                            <div class="col-md-7">
             
                                 <div class="row mt-4 mt-sm-2">
                                     <div class="col-6">
@@ -125,13 +129,9 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="text-center">
-                    <a href="<%= book.bestPurchaseLink %> " class="btn btn-primary">Best Buy</a>
-                    <a href="/books/<%= book._id %>/edit" class="btn btn-primary">Update Book</a>
-                </div>
-            </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <a href="<%= book.bestPurchaseLink %>" id="best-buy" class="btn btn-outline-primary"><strong>Best Buy</strong></a>
+            <a href="/books/<%= book._id %>/edit" class="btn btn-outline-primary"><strong>Update Book</strong></a>
         </div>
 
         <h2 class="text-center mt-5">Book Excerpt</h2>
@@ -172,8 +172,8 @@
                                 <div class="row">
                                     <% for(let j = 0; j < Math.min(5,books.length); j++){ %> 
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="<%= books[j].bestPurchaseLink %> ">
-                                            <img class="img-fluid border rounded" src="<%= books[j].image %> " alt="Product Image">
+                                        <a class="external-links" href="<%= books[j].bestPurchaseLink %>">
+                                            <img class="img-fluid border rounded" src="<%= books[j].image %>" alt="Product Image">
                                         </a>
                                     </div>
                                     <% } %> 
@@ -185,8 +185,8 @@
                                 <div class="row">
                                     <% for(let j = 5; j < Math.min(10,books.length); j++){ %> 
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="<%= books[j].bestPurchaseLink %> ">
-                                            <img class="img-fluid border rounded" src="<%= books[j].image %> " alt="Product Image" height="125px">
+                                        <a class="external-links" href="<%= books[j].bestPurchaseLink %>">
+                                            <img class="img-fluid border rounded" src="<%= books[j].image %>" alt="Product Image" height="125px">
                                         </a>
                                     </div>
                                     <% } %> 
@@ -235,7 +235,6 @@
                                     <strong>Anonymous User</strong> rated : <strong><%= book.reviews[i].rating %> Stars</strong>
                                     <% } %>  
                                 </h5>
-                                <!-- <p class="text-muted light-300">10 mins ago</p> -->
                             </div>
                         </div>
                         <div class="footer">
