@@ -484,11 +484,11 @@ span.stars span {
   justify-content: start;
 }
 
-#templatemo-slide-link-target {
+#target-img {
   box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.3);
 }
 
-#templatemo-slide-link-target img {
+#target-img img {
   border: 0px;
 }
 

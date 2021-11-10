@@ -5,11 +5,11 @@
     <script src="/js/showPage.js" defer></script>
     <h1 class="text-center text-dark mt-3 mb-0 display-4"><%= book.title %> </h2>
     <section class="container py-5">
-        <div class="row justify-content-start pb-4">
-            <div class="col-lg-6">
+        <div class="row pb-4">
+            <div class="col-lg-6 d-flex">
 
-                <div class="card mb-3" style="width: 500px;">
-                    <img class="border rounded" src="<%= book.image %>" alt="Card image cap" height="700px" width="500px">
+                <div class="card mb-3 justify-content-center" style="width: 500px;">
+                    <img id="target-img" class="border rounded justify-content-center" src="<%= book.image %>" alt="Card image cap" height="700px" width="500px">
                 </div>
             </div>
             <div class="col-lg-6 align-self-center">
