@@ -39,7 +39,7 @@ const datavalidation_book = (req, res, next) => {
   if (error) {
     console.log("error in book validation\n");
     console.log(error);
-    throw new CustomError("error in Book Validation --> improper fields given", 400);
+    throw new CustomError("error in Book Validation => improper fields given", 400);
   } else {
     next(); //else go ahead
   }
@@ -51,7 +51,7 @@ const datavalidation_bookReview = (req, res, next) => {
   if (error) { //on a error log it to server console as well as throw CustomError to be handled and shown to the client
     //err msg
     console.log("error in book validation\n");
-    throw new CustomError("error in BookReview Validation --> improper fields given",400);
+    throw new CustomError("error in BookReview Validation => improper fields given",400);
   } else {
     next(); //else go ahead
   }

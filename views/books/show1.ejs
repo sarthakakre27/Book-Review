@@ -1,43 +1,49 @@
 <% layout('layouts/boilerplate1')%>
 
-    <!-- Start Work Sigle -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer></script>
-    <script src="/js/showPage.js" defer></script>
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer></script><!-- CDN for sweey alert package -->
+    <script src="/js/showPage.js" defer></script><!-- script for alert message on redirecting to ecternal website -->
+    <!-- book title on top -->
     <h1 class="text-center text-dark mt-3 mb-0 display-4"><%= book.title %> </h2>
-    <section class="container py-5">
-        <div class="row pb-4">
-            <div class="col-lg-6 d-flex">
-
+    <section class="container py-5"><!-- bootstrap container for rows and cols -->
+        <div class="row pb-4"><!-- row start -->
+            <div class="col-lg-6 d-flex"> <!-- col1 flex container -->
+                <!-- add a book image -->
                 <div class="card mb-3 justify-content-center" style="width: 500px;">
                     <img id="target-img" class="border rounded justify-content-center" src="<%= book.image %>" alt="Card image cap" height="700px" width="500px">
                 </div>
             </div>
-            <div class="col-lg-6 align-self-center">
+            <div class="col-lg-6 align-self-center"><!-- col2 -->
+                <!-- section to display statistics -->
                 <section class="bg-white py-3">
                     <div class="container my-2">
-            
+                        <!-- rating stats head -->
                         <h1 class="h2 pb-3">Rating Statistics</h1>
+                        <!-- inject avg rating if not undefined -->
                         <h1 class="h3 pb-3 text-muted">Average Rating : <% if(avg_rating){ %>
                             <%= avg_rating %> 
                         <% }else{ %> 
                             0
                         <% } %> 
                         </h1>
-                        
+                        <!-- display the stars visually respective to avg rating -->
                         <% if(avg_rating){ %>
                             <div class="display-star-rating">
                                 <p class="text-center"><span class="stars"><%= avg_rating %> </span></p>
                             </div>
                         <% } %>
+                        <!-- display total ratings -->
                         <h1 class="h3 pb-3 text-muted font-start">Total Ratings : <%= book.reviews.length %> </h1>
-            
+                        <!-- rows for displaying the progress bars as the rating percentages -->
                         <div class="row py-3">
                             <div class="col-md-7">
             
                                 <div class="row mt-4 mt-sm-2">
+                                    <!-- display stars -->
                                     <div class="col-6">
                                         <h4 class="h5">1 Star</h4>
                                     </div>
+                                    <!-- display percentage -->
                                     <div class="col-6 text-right">
                                         <% if(rev_1){ %> 
                                             <%= rev_1 %>%
@@ -46,15 +52,18 @@
                                         <% } %> 
                                     </div>
                                 </div>
+                                <!-- progress bar according to percentage -->
                                 <div class="progress">
                                     <% let str_rev_1 = "width:" + rev_1 + "%;" %> 
                                     <div class="progress-bar" role="progressbar" style=<%= str_rev_1 %> ></div>
                                 </div>
             
                                 <div class="row mt-4 mt-sm-2">
+                                    <!-- display stars -->
                                     <div class="col-6">
                                         <h4 class="h5">2 Star</h4>
                                     </div>
+                                    <!-- display percentage -->
                                     <div class="col-6 text-right">
                                         <% if(rev_2){ %> 
                                             <%= rev_2 %>%
@@ -63,6 +72,7 @@
                                         <% } %> 
                                     </div>
                                 </div>
+                                <!-- progress bar according to percentage -->
                                 <div class="progress">
                                     <% let str_rev_2 = "width:" + rev_2 + "%;" %> 
                                     <div class="progress-bar" role="progressbar" style=<%= str_rev_2 %> ></div>
@@ -70,9 +80,11 @@
             
             
                                 <div class="row mt-4 mt-sm-2">
+                                    <!-- display stars -->
                                     <div class="col-6">
                                         <h4 class="h5">3 Star</h4>
                                     </div>
+                                    <!-- display percentage -->
                                     <div class="col-6 text-right">
                                         <% if(rev_3){ %> 
                                             <%= rev_3 %>%
@@ -81,6 +93,7 @@
                                         <% } %> 
                                     </div>
                                 </div>
+                                <!-- progress bar according to percentage -->
                                 <div class="progress">
                                     <% let str_rev_3 = "width:" + rev_3 + "%;" %> 
                                     <div class="progress-bar" role="progressbar" style=<%= str_rev_3 %> ></div>
@@ -88,9 +101,11 @@
 
 
                                 <div class="row mt-4 mt-sm-2">
+                                    <!-- display stars -->
                                     <div class="col-6">
                                         <h4 class="h5">4 Star</h4>
                                     </div>
+                                    <!-- display percentage -->
                                     <div class="col-6 text-right">
                                         <% if(rev_4){ %> 
                                             <%= rev_4 %>%
@@ -99,6 +114,7 @@
                                         <% } %> 
                                     </div>
                                 </div>
+                                <!-- progress bar according to percentage -->
                                 <div class="progress">
                                     <% let str_rev_4 = "width:" + rev_4 + "%;" %> 
                                     <div class="progress-bar" role="progressbar" style=<%= str_rev_4 %> ></div>
@@ -106,9 +122,11 @@
 
 
                                 <div class="row mt-4 mt-sm-2">
+                                    <!-- display stars -->
                                     <div class="col-6">
                                         <h4 class="h5">5 Star</h4>
                                     </div>
+                                    <!-- display percentage -->
                                     <div class="col-6 text-right">
                                         <% if(rev_5){ %> 
                                             <%= rev_5 %>%
@@ -117,6 +135,7 @@
                                         <% } %> 
                                     </div>
                                 </div>
+                                <!-- progress bar according to percentage -->
                                 <div class="progress">
                                     <% let str_rev_5 = "width:" + rev_5 + "%;" %> 
                                     <div class="progress-bar" role="progressbar" style=<%= str_rev_5 %> ></div>
@@ -125,20 +144,21 @@
                         </div>
                     </div>
                 </section>
-                <!-- End Progress -->
             </div>
         </div>
 
+        <!-- buttons for best buy and update book -->
         <div class="d-grid gap-2 col-6 mx-auto">
             <a href="<%= book.bestPurchaseLink %>" id="best-buy" class="btn btn-outline-primary"><strong>Best Buy</strong></a>
             <a href="/books/<%= book._id %>/edit" class="btn btn-outline-primary"><strong>Update Book</strong></a>
         </div>
 
-        <h2 class="text-center mt-5">Book Excerpt</h2>
+        <h2 class="text-center mt-5">Book Excerpt</h2><!-- Book excerpt head -->
 
+        <!-- display excerpt of the book -->
         <div class="row">
             <div class="col-md-8 m-auto text-center justify-content-center">
-                <p class="display-6 py-4 ps-4 border border-5 border-top-0 border-end-0 border-bottom-0 border-start">
+                <p class="display-6 py-4 ps-4 border border-5 border-top-0 border-end-0 border-bottom-0 border-start"><!-- border left -->
                     <i>
                         <%= book.about %> 
                     </i>
@@ -148,32 +168,24 @@
 
 
         <div class="row justify-content-center">
-            <div class="worksingle-comment-heading col-8 m-auto pb-3 just">
-                <p class="h2 text-center text-muted">Click to visit Best Purchase</p>
+            <div class="col-8 m-auto pb-3 just">
+                <p class="h2 text-center text-muted">Click to visit Best Purchase</p><!-- header for carousel -->
             </div>
         </div>
-        <div class="row justify-content-center py-3">
+        <div class="row justify-content-center py-3"><!-- row for carousel for buschase links of books -->
             <div class="col-lg-8">
-                <div class="worksingle-slide-footer row">
-                    <!--Start Controls-->
-                    <div class="col-1 align-self-center">
-                        <a href="#multi-item-example" role="button" data-bs-slide="prev">
-                            <i class='bx bxs-chevron-left bx-sm text-dark'></i>
-                        </a>
-                    </div>
-                    <!--End Controls-->
-
-                    <!--Start Carousel Wrapper-->
-                    <div id="multi-item-example" class="col-10 carousel slide carousel-dark" data-bs-ride="carousel">
-                        <!--Start Slides-->
+                <div class="row justify-content-center">
+                    <div class="col-10 carousel slide carousel-dark" data-bs-ride="carousel">
+                        <!-- carousel start -->
                         <div class="carousel-inner" role="listbox">
-
+                            <!-- carousel slide 1 -->
                             <div class="carousel-item active">
                                 <div class="row">
+                                    <!-- loop for five books in carousel -->
                                     <% for(let j = 0; j < Math.min(5,books.length); j++){ %> 
                                     <div class="col">
                                         <a class="external-links" href="<%= books[j].bestPurchaseLink %>">
-                                            <img class="img-fluid border rounded" src="<%= books[j].image %>" alt="Product Image">
+                                            <img class="img-fluid border rounded" src="<%= books[j].image %>" alt="Product Image" height="125px">
                                         </a>
                                     </div>
                                     <% } %> 
@@ -181,8 +193,10 @@
                             </div>
 
                             <% if(books.length > 5){ %> 
+                            <!-- carousel slide 2 -->
                             <div class="carousel-item">
                                 <div class="row">
+                                    <!-- loop for five books in carousel -->
                                     <% for(let j = 5; j < Math.min(10,books.length); j++){ %> 
                                     <div class="col">
                                         <a class="external-links" href="<%= books[j].bestPurchaseLink %>">
@@ -195,39 +209,31 @@
                             <% } %> 
 
                         </div>
-                        <!--End Slides-->
                     </div>
-                    <!--End Carousel Wrapper-->
-
-                    <!--Start Controls-->
-                    <div class="col-1 align-self-center text-end">
-                        <a href="#multi-item-example" role="button" data-bs-slide="next">
-                            <i class='bx bxs-chevron-right bx-sm text-dark'></i>
-                        </a>
-                    </div>
-                    <!--End Controls-->
-
                 </div>
-            </div>
-        </div><!-- End Slider -->
-
-        <!-- Start Comment -->
-        <div class="row justify-content-center">
-            <div class="worksingle-comment-heading col-8 m-auto pb-3 just">
-                <p class="h2 text-center">Book Reviews</p>
             </div>
         </div>
 
-        <% for(let i = 0; i < book.reviews.length; i++){ %> 
+        <!-- Reviews -->
+        <div class="row justify-content-center">
+            <div class="col-8 m-auto pb-3 just">
+                <p class="h2 text-center">Book Reviews</p><!-- Book Review header -->
+            </div>
+        </div>
+
+        <% for(let i = 0; i < book.reviews.length; i++){ %> <!-- loop for reviews of the book -->
         <div class="row pb-4">
             <div class="worksingle-comment-body col-md-8 m-auto">
                 <div class="d-flex">
+                    <!-- user image -->
                     <div>
                         <img class="rounded-circle" src="/img/user-regular-72.png" style="width: 50px;">
                     </div>
+                    <!-- review body -->
                     <div class="comment-body">
                         <div class="comment-header d-flex justify-content-between ms-3">
                             <div class="header text-start">
+                                <!-- display username and rated stars -->
                                 <h5 class="h6">
                                     <% if(book.reviews[i].username){%>
                                         <strong><%= book.reviews[i].username %></strong> rated : <strong><%= book.reviews[i].rating %> Stars</strong>
@@ -237,6 +243,7 @@
                                 </h5>
                             </div>
                         </div>
+                        <!-- display the content -->
                         <div class="footer">
                             <div class="card-body border ms-3 light-300" style="width: 800px;">
                                 <%= book.reviews[i].content %> 
@@ -245,52 +252,51 @@
                     </div>
                 </div>
             </div>
-        </div><!-- End Comment -->
+        </div>
         <% } %> 
 
-
+        <!-- form for adding review -->
         <div class="row pb-0">
             <div class="worksingle-comment-footer col-lg-8 m-auto">
-                <h4 class="h5 Review-Title">Leave Your Review</h4>
+                <h4 class="h5 Review-Title">Leave Your Review</h4><!-- form header -->
                 <form class="col-md-12 m-auto" id="form2" method="POST" action="/books/<%=book._id%>/book-review" role="form">
 
                     <div class="form-group">
+                        <!-- input for comment -->
                         <div class="form-control">
                             <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputmessage">Your Comment</label>
                             <textarea class="form-control form-control-lg light-300" id="inputmessage" name="review[content]" placeholder="Your Comment" rows="3"></textarea>
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error message</small>
+                            <i class="fas fa-check-circle"></i><!-- tag for form validation -->
+                            <i class="fas fa-exclamation-circle"></i><!-- tag for form validation -->
+                            <small>Error message</small><!-- tag for form validation -->
                         </div>
                     </div>
 
                     <div class="row py-4">
+                        <!-- input for comment -->
                         <div class="col-lg-6">
                                 <div class="form-control">
                                 <label class="pb-2 light-300" for="inputname">Your UserName</label>
                                 <input type="text" class="form-control form-control-lg light-300" id="inputname" name="review[username]" placeholder="UserName">
-                                <i class="fas fa-check-circle"></i>
-                                <i class="fas fa-exclamation-circle"></i>
-                                <small>Error message</small>
+                                <i class="fas fa-check-circle"></i><!-- tag for form validation -->
+                                <i class="fas fa-exclamation-circle"></i><!-- tag for form validation -->
+                                <small>Error message</small><!-- tag for form validation -->
                             </div>
                         </div>
+                        <!-- rating input in form of stars -->
                         <div class="col-lg-6 ratings">
                             <label class="pb-2 pt-sm-0 pt-4 light-300" id="star-rating" for="inputemail">Rating</label>
                             <div class="rating">
-                                <span><input type="radio" name="review[rating]" id="str5" value="5"><label for="str5"><i class="fas fa-star"></i>
-                                </label></span>
-                                <span><input type="radio" name="review[rating]" id="str4" value="4"><label for="str4"><i class="fas fa-star"></i>
-                                </label></span>
-                                <span><input type="radio" name="review[rating]" id="str3" value="3"><label for="str3"><i class="fas fa-star"></i>
-                                </label></span>
-                                <span><input type="radio" name="review[rating]" id="str2" value="2"><label for="str2"><i class="fas fa-star"></i>
-                                </label></span>
-                                <span><input type="radio" name="review[rating]" id="str1" value="1"><label for="str1"><i class="fas fa-star"></i>
-                                </label></span>
+                                <!-- radio inputs styled as stars -->
+                                <span><input type="radio" name="review[rating]" id="str5" value="5"><label for="str5"><i class="fas fa-star"></i></label></span>
+                                <span><input type="radio" name="review[rating]" id="str4" value="4"><label for="str4"><i class="fas fa-star"></i></label></span>
+                                <span><input type="radio" name="review[rating]" id="str3" value="3"><label for="str3"><i class="fas fa-star"></i></label></span>
+                                <span><input type="radio" name="review[rating]" id="str2" value="2"><label for="str2"><i class="fas fa-star"></i></label></span>
+                                <span><input type="radio" name="review[rating]" id="str1" value="1"><label for="str1"><i class="fas fa-star"></i></label></span>
                             </div>
                         </div>
                     </div>
-
+                    <!-- submit button -->
                     <div class="form-row pt-2">
                         <div class="col-md-12 col-10 text-end">
                             <button type="submit" class="btn btn-success text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">Add Review</button>
@@ -298,7 +304,5 @@
                     </div>
                 </form>
             </div>
-        </div><!-- End Comment Form -->
-
-
+        </div>
     </section>

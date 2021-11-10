@@ -24,7 +24,7 @@
 /* Boday layout for form pages */
 body .book-form {
   background: url("https://www.teahub.io/photos/full/43-435347_1920x1080-wallpaper-purple-blue-gradient-linear-light-light.jpg")
-    center center fixed no-repeat;
+  center center fixed no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
