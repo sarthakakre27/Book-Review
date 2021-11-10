@@ -126,6 +126,11 @@ app.get("/books/:id", async (req, res, next) => {
     }
     let avg_rating = (rev_1*1 + rev_2*2 + rev_3*3 + rev_4*4 + rev_5*5)/(book.reviews.length); //calc avg. rating
     avg_rating = Math.floor(avg_rating*100)/100;
+    if(avg_rating)
+    {
+      book.avgRating = avg_rating; // store the avg rating calculated
+      await book.save();
+    }
     //ratings for rating statistics
     rev_1 = Math.floor((rev_1*100)/book.reviews.length);
     rev_2 = Math.floor((rev_2*100)/book.reviews.length);
@@ -155,7 +160,7 @@ app.get("/books/:id/edit", async (req, res) => {
   }
 });
 
-//PUT route for updating book, validate the book schema in re.params
+//PUT route for updating book, validate the book schema in req.params
 app.put("/books/:id", datavalidation_book, async (req, res) => {
   try {
     const { id } = req.params;
@@ -186,7 +191,7 @@ app.post("/books/:id/book-review", datavalidation_bookReview, async (req, res) =
       book.reviews.push(review); // add to reviews array of the book
       await review.save(); // save the review
       await book.save(); //save the book after update
-      res.redirect(`/books/${book._id}`); //redirect to book shaow page
+      res.redirect(`/books/${book._id}`); //redirect to book show page
     } catch (err) {
       next(err); // catch the error and call the error handler middleware
     }
