@@ -279,6 +279,7 @@ body .book-form {
 }
 
 .image__description {
+  text-align: center;
   font-size: 16px;
   margin-top: 0.25em;
   color: black;
