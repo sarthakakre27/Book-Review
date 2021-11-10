@@ -129,7 +129,12 @@ app.get("/books/:id", async (req, res, next) => {
     if(avg_rating)
     {
       book.avgRating = avg_rating; // store the avg rating calculated
-      await book.save();
+      book.save();
+    }
+    else
+    {
+      book.avgRating = 0;
+      book.save();
     }
     //ratings for rating statistics
     rev_1 = Math.floor((rev_1*100)/book.reviews.length);

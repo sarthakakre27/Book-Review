@@ -106,7 +106,7 @@
                             </p>
                             <div class="small-star">
                                 <div class="display-star-rating">
-                                    <p><span class="stars">4.5</span></p>
+                                    <p><span class="stars"><%= books[i].avgRating %></span></p>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,15 @@
                                 </p>
                                 <div class="small-star">
                                     <div class="display-star-rating">
-                                        <p><span class="stars">4.5</span></p>
+                                        <p>
+                                            <span class="stars">
+                                                <% if(books[i].avgRating){ %> 
+                                                    <%= books[i].avgRating %>
+                                                <% }else{ %>
+                                                    0
+                                                <% } %> 
+                                            </span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
