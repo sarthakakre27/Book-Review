@@ -326,7 +326,7 @@ body .book-form {
   font-weight: lighter;
 }
 
-#index_banner .carousel-inner {
+#carousel .carousel-inner {
   height: 50vh;
 }
 
@@ -515,9 +515,14 @@ body .book-form {
   font-size: 13px;
   margin-bottom: 0;
 }
-/*-------------------------------------------------------------------------------------*/
 
-/*------------------------------------display star-------------------------------------*/
+.footer-links {
+  text-decoration: none;
+}
+
+/*-----------------------------------------------------------------------------------------*/
+
+/*----------------------------------Display Star Rating------------------------------------*/
 .top-star {
   width: 100px;
   height: 100px;
@@ -566,7 +571,8 @@ span.stars span {
   padding-left: 12px;
 }
 
+/* Height of rating bar */
 .progress {
-  height: 8px;
+  height: 10px;
 }
 /* ------------------------------------------------------------------------------------- */
