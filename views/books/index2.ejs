@@ -1,27 +1,28 @@
 <% layout('layouts/boilerplate1') %>
 
     <!-- Body injected in boilerplate1 -->
-    <!-- Start Banner Hero -->
-    <div class="banner-wrapper bg-light">
-        <div id="index_banner" class="banner-vertical-center-index container-fluid py-0">
+    <div class="bg-light">
+        <div id="carousel" class="container-fluid py-0">
 
             <!-- Start slider -->
             <div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="carousel">
+                <!-- ordered list for slider indicators bottom bars -->
                 <ol class="carousel-indicators">
                     <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
                     <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
                     <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
+                    <!-- carousel active page-item -->
                     <div class="carousel-item active">
-                        <div class="row d-flex align-items-center pt-5 pb-0">
-                            <div class="col-lg-8 col-8 offset-2 m-lg-auto text-center py-2 pb-2">
-                                <h1 class="h1 text-primary display-3 mb-0 pb-3 mx-0 px-0 light-300">
+                        <div class="row d-flex align-items-center pt-5 pb-0"><!-- bootstrap row with flex styling -->
+                            <div class="col-lg-8 col-8 offset-2 m-lg-auto text-center py-2 pb-2"><!-- column with size according to row basic widths -->
+                                <h1 class="h1 text-primary display-3 mb-0 pb-3 mx-0 px-0 light-300"><!-- heding text -->
                                     Welcome <del>Nerds</del> Geeks to
                                   <br>
                                   <strong>NerdyStan</strong>
                               </h1>
-                                <h3 class="text-muted py-3 mx-0 px-0">
+                                <h3 class="text-muted py-3 mx-0 px-0"><!-- content text -->
                                     Welcome to your dream place where you can list your Book and leave ratings and know more about other books that you never read!
                                 </h3>
                             </div>
@@ -29,39 +30,44 @@
 
                     </div>
                     <div class="carousel-item">
-                        <div class="py-1 row d-flex align-items-center pt-5 pb-0">
-                            <div class="col-lg-8 col-8 offset-2 m-lg-auto text-center py-2 pb-2">
-                                <h1 class="h1 text-primary display-3 mb-0 pb-3 mx-0 px-0 light-300">
+                        <div class="py-1 row d-flex align-items-center pt-5 pb-0"><!-- bootstrap row with flex styling -->
+                            <div class="col-lg-8 col-8 offset-2 m-lg-auto text-center py-2 pb-2"><!-- column with size according to row basic widths -->
+                                <h1 class="h1 text-primary display-3 mb-0 pb-3 mx-0 px-0 light-300"><!-- heding text -->
                                     <strong>Add a Book</strong>
                                 </h1>
-                                <h3 class="text-muted py-3">
+                                <h3 class="text-muted py-3"><!-- content text -->
                                     List a Book that you read recently and see what others think of it!
                                 </h3>
+                                <!-- button for the respective section -->
                                 <a class="btn rounded-pill btn-outline-primary btn-lg px-4" href="/books/new" role="button">Add A Book</a>
                             </div>
                         </div>
 
                     </div>
                     <div class="carousel-item">
-                        <div class="py-1 row d-flex align-items-center pt-5 pb-0">
-                            <div class="col-lg-8 col-8 offset-2 m-lg-auto text-center py-2 pb-2">
-                                <h1 class="h1 text-primary display-3 mb-0 pb-3 mx-0 px-0 light-300">
+                        <div class="py-1 row d-flex align-items-center pt-5 pb-0"><!-- bootstrap row with flex styling -->
+                            <div class="col-lg-8 col-8 offset-2 m-lg-auto text-center py-2 pb-2"><!-- column with size according to row basic widths -->
+                                <h1 class="h1 text-primary display-3 mb-0 pb-3 mx-0 px-0 light-300"><!-- heding text -->
                                     <strong>Leave Reviews</strong>
                                 </h1>
-                                <h3 class="text-muted py-3">
+                                <h3 class="text-muted py-3"><!-- content text -->
                                     Review the Book You read and let Others Know how much you liked it!
                                 </h3>
+                                <!-- button for the respective section -->
                                 <a class="btn rounded-pill btn-outline-primary btn-lg px-4" href="#book-section" role="button">Find A Book To Review</a>
                             </div>
                         </div>
 
                     </div>
                 </div>
+                <!-- buttons for sliding carousel -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <!-- icon for previous -->
                     <span class="carousel-control-prev-icon dark" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <!-- icon for next -->
                     <span class="carousel-control-next-icon dark" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -70,10 +76,13 @@
         </div>
     </div>
 
+    <!-- buffer nav-like mid-bar for displaying features of the website -->
     <section class="py-3">
-        <div class="service-tag py-5 bg-secondary">
+        <div class="py-4 bg-secondary">
             <div class="col-md-12">
-                <ul class="nav d-flex justify-content-center">
+                <!-- unordered list of nav links - dead links -->
+                <ul class="nav d-flex justify-content-around"><!-- flex container with content spacing around -->
+                    <!-- feature nav links -->
                     <li class="nav-item mx-lg-4">
                         <a class="filter-btn nav-link btn-outline-primary active shadow rounded-pill text-light px-4 light-300" href="#" data-filter=".project">View Books</a>
                     </li>
@@ -91,23 +100,35 @@
         </div>
     </section>
 
-    <section class="container py-5" id="book-section">
-        <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
+    <!-- first section to show books -->
+    <section class="container py-5" id="book-section"><!-- bootstrap container for rows and colums -->
+        <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects"><!-- bootstrap row with gutter sizing-->
 
-            <% for(let i = 0; i < Math.min(Math.floor(books.length/2),8); i++){ %> 
-            <div class="col-xl-3 col-md-4 col-sm-6">
-                <a href="/books/<%= books[i]._id %> ">
-                    <div class="img-box" id="index-img-box">
-                        <img id="index-card-img" class="service card-img image__img" src="<%= books[i].image %> " alt="Card image" height="400px">
+            <% for(let i = 0; i < Math.min(Math.floor(books.length/2),8); i++){ %> <!-- loop for books min of length/2 of books < 8 -->
+            <div class="col-xl-3 col-md-4 col-sm-6"><!-- bootstrap col with col sizing -->
+                <a href="/books/<%= books[i]._id %>"> <!-- wrapping in anchor to direct to book show page -->
+                    <div class="img-box" id="index-img-box"> <!-- book image box -->
+                        <!-- adding book image -->
+                        <img id="index-card-img" class="card-img image__img" src="<%= books[i].image %> " alt="Card image" height="400px">
+                        <!-- adding a overlay on image box on hover -->
                         <div class="image__overlay image__overlay--primary">
+                            <!-- display book title and author -->
                             <div class="image__title"><h3><%= books[i].title %></h3></div>
                             <p class="image__description">
                                 By ~ <%= books[i].author %> 
                             </p>
-                            <div class="small-star">
-                                <div class="display-star-rating">
-                                    <p><span class="stars"><%= books[i].avgRating %></span></p>
-                                </div>
+                            <!-- custom stars display for rating -->
+                            <div class="display-stars-overlay">
+                                <p>
+                                    <!-- display stars according to average rating if not undefined -->
+                                    <span class="stars">
+                                        <% if(books[i].avgRating){ %> 
+                                            <%= books[i].avgRating %>
+                                        <% }else{ %>
+                                            0
+                                        <% } %> 
+                                    </span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -118,12 +139,12 @@
         </div>
     </section>
 
-
+    <!-- section to display a quote -->
     <section class="bg-secondary">
-        <div class="container py-4 text-center">
+        <div class="container py-4 text-center"> <!-- bootstrap container for rows and cols -->
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-7 col-12 text-light pt-2">
-                    <h3>There is No friend as loyal as a Book ~ <i>Ernest Hemingway</i></h3>
+                    <h3>There is No friend as loyal as a Book ~ <i>Ernest Hemingway</i></h3> <!-- quote -->
                 </div>
             </div>
         </div>
@@ -134,30 +155,31 @@
             <div class="row text-center pb-5">
                 <h2 id="more-books" class="col-md-6 m-auto h1 py-3 text-primary">More Books</h2>
             </div>
-            <div class="row gy-5 g-lg-5 mb-4">
-
-                <% for(let i = Math.floor(books.length/2); i < books.length; i++){ %> 
-                <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
+            <div class="row gy-5 g-lg-5 mb-4"><!-- bootstrap row with gutter sizing-->
+                <% for(let i = Math.floor(books.length/2); i < books.length; i++){ %> <!-- loop for books of length of books > 8 -->
+                <div class="col-xl-3 col-md-4 col-sm-6 mb-3"><!-- bootstrap col with col sizing -->
                     <a href="/books/<%= books[i]._id %> ">
                         <div class="img-box" id="index-img-box">
                             <img id="index-card-img" class="service card-img image__img" src="<%= books[i].image %> " alt="Card image" height="400px">
+                            <!-- adding a overlay on image box on hover -->
                             <div class="image__overlay image__overlay--primary">
+                                <!-- display book title and author -->
                                 <div class="image__title"><h3><%= books[i].title %></h3></div>
                                 <p class="image__description">
                                     By ~ <%= books[i].author %> 
                                 </p>
-                                <div class="small-star">
-                                    <div class="display-star-rating">
-                                        <p>
-                                            <span class="stars">
-                                                <% if(books[i].avgRating){ %> 
-                                                    <%= books[i].avgRating %>
-                                                <% }else{ %>
-                                                    0
-                                                <% } %> 
-                                            </span>
-                                        </p>
-                                    </div>
+                                <!-- custom stars display for rating -->
+                                <div class="display-stars-overlay">
+                                    <p>
+                                        <!-- display stars according to average rating if not undefined -->
+                                        <span class="stars">
+                                            <% if(books[i].avgRating){ %> 
+                                                <%= books[i].avgRating %>
+                                            <% }else{ %>
+                                                0
+                                            <% } %> 
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -12,3 +12,4 @@ package-lock.json
 # /assets/js/custom1.js
 /assets/js/isotope.pkgd.js
 /assets/js/jquery.min.js
+/views/books/old/
