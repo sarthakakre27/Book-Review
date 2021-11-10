@@ -468,7 +468,7 @@ body .book-form {
 span.stars,
 span.stars span {
   display: block;
-  background: url() 0 0 repeat-x;
+  background: 0 0 repeat-x;
   width: 200px; /* width of a star multiplied by 5 */
   height: 40px; /* the height of the star */
   background-size: 40px 40px;
