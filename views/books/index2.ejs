@@ -98,11 +98,11 @@
 
             <% for(let i = 0; i < Math.min(Math.floor(books.length/2),8); i++){ %> 
             <!-- Start Recent Work -->
-            <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
+            <div class="col-xl-3 col-md-4 col-sm-6">
                 <a href="/books/<%= books[i]._id %> ">
                     <!-- <img class="service card-img" src="./assets/img/services-01.jpg" alt="Card image"> -->
-                    <div class="img-box">
-                        <img class="service card-img image__img" src="<%= books[i].image %> " alt="Card image" height="400px">
+                    <div class="img-box" id="index-img-box">
+                        <img id="index-card-img" class="service card-img image__img" src="<%= books[i].image %> " alt="Card image" height="400px">
                         <div class="image__overlay image__overlay--primary">
                             <div class="image__title"><h3><%= books[i].title %></h3></div>
                             <p class="image__description">
@@ -148,8 +148,8 @@
                 <div class="col-xl-3 col-md-4 col-sm-6 mb-3">
                     <a href="/books/<%= books[i]._id %> ">
                         <!-- <img class="service card-img" src="./assets/img/services-01.jpg" alt="Card image"> -->
-                        <div class="img-box">
-                            <img class="service card-img image__img" src="<%= books[i].image %> " alt="Card image" height="400px">
+                        <div class="img-box" id="index-img-box">
+                            <img id="index-card-img" class="service card-img image__img" src="<%= books[i].image %> " alt="Card image" height="400px">
                             <div class="image__overlay image__overlay--primary">
                                 <div class="image__title"><h3><%= books[i].title %></h3></div>
                                 <p class="image__description">

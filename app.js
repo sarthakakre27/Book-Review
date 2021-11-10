@@ -1,6 +1,4 @@
-
 /*------------------------importing all the modules that are required for backend------------------------------*/
-
 const express = require("express"); //main framework for rendering, routing, etc.
 const path = require("path"); //to join path of the file with it's base location
 const ejsMate = require("ejs-mate"); //
@@ -22,6 +20,7 @@ db.once("open", () => {
 });
 /*-------------------------------------------------------------------------------------------------------------*/
 
+/*---------------------------------------- app settings -------------------------------------------------------*/
 const app = express();
 app.set("view engine", "ejs"); //setting the front-end rendering to ejs(embedded JS)
 app.engine("ejs", ejsMate);
@@ -30,6 +29,9 @@ app.use(express.urlencoded({ extended: true })); //for parsing the req body
 app.use(methodOverride("_method")); //for PUT / DELETE requests
 app.use(express.static(path.join(__dirname, 'assets'))); //serving the assests directory publicly
 
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------- validation middlewares --------------------------------------------*/
 //middleware for book Model validation
 const datavalidation_book = (req, res, next) => {
   const { error } = bookSchemaCheck.validate(req.body); //validating request body and returning error if any
@@ -54,15 +56,16 @@ const datavalidation_bookReview = (req, res, next) => {
     next(); //else go ahead
   }
 };
+/*-------------------------------------------------------------------------------------------------------------*/
 
-// routes for the REST api
+/*----------------------------------------- REST routes for app -----------------------------------------------*/
 
 app.get("/", (req, res) => {
     res.redirect("/books"); //redirect to home page /books
 });
 
 //READ page for viewing all the books
-// GET request
+// GET route
 app.get("/books", async (req, res, next) => {
   try {
     let books = await Book.find({}); //find all books from database
@@ -72,29 +75,30 @@ app.get("/books", async (req, res, next) => {
   }
 });
 
-//GET request for form to render to accept a new Book
+//GET route for form to render to accept a new Book
 app.get("/books/new", (req, res) => {
   res.render("books/new2");
 });
 
-//POST request to add a book
+//POST request to add a book, validate the request body and then save
 app.post("/books", datavalidation_book, async (req, res, next) => {
   try {
     let book = new Book(req.body.book);
     await book.save();
     res.redirect("/books");
   } catch (err) {
-    next(err);
+    next(err);// catch any errors in database data storage
   }
 });
 
+//GET route for a specific book (w.r.t. id)
 app.get("/books/:id", async (req, res, next) => {
   try {
-    let book = await Book.findById(req.params.id).populate("reviews");
-    let books = await Book.find({});
+    let book = await Book.findById(req.params.id).populate("reviews");// find book by id and populate it's reviews
+    let books = await Book.find({}); //find all books to display
 
-    let rev_1 = 0,rev_2 = 0,rev_3 = 0,rev_4 = 0,rev_5 = 0;
-    for(let review of book.reviews)
+    let rev_1 = 0,rev_2 = 0,rev_3 = 0,rev_4 = 0,rev_5 = 0; //vars for no. of reviews of diff ratings
+    for(let review of book.reviews) // calculate ratings
     {
       switch(review.rating)
       {
@@ -120,93 +124,99 @@ app.get("/books/:id", async (req, res, next) => {
         }
       }
     }
-    let avg_rating = (rev_1*1 + rev_2*2 + rev_3*3 + rev_4*4 + rev_5*5)/(book.reviews.length);
+    let avg_rating = (rev_1*1 + rev_2*2 + rev_3*3 + rev_4*4 + rev_5*5)/(book.reviews.length); //calc avg. rating
     avg_rating = Math.floor(avg_rating*100)/100;
+    //ratings for rating statistics
     rev_1 = Math.floor((rev_1*100)/book.reviews.length);
     rev_2 = Math.floor((rev_2*100)/book.reviews.length);
     rev_3 = Math.floor((rev_3*100)/book.reviews.length);
     rev_4 = Math.floor((rev_4*100)/book.reviews.length);
     rev_5 = Math.floor((rev_5*100)/book.reviews.length);
-    // console.log("found book");
-    if (!book) {
-      //err message
-      // console.log("in not book");
+
+    if (!book) { // if no book found throw not found error
       throw new CustomError("No Book Found",404);
     }
     res.render("books/show1", { book , books , rev_1, rev_2, rev_3, rev_4, rev_5, avg_rating});
   } catch (err) {
-    // console.log("in catch block");
-    next(err);
+    next(err); // catch the error and call the error handler middleware
   }
 });
 
+//GET route for book edit form
 app.get("/books/:id/edit", async (req, res) => {
   try {
-    let book = await Book.findById(req.params.id);
-    if (!book) {
-      //err message
+    let book = await Book.findById(req.params.id); // find book by id(req params)
+    if (!book) { // if no book found throw not found error
+      throw new CustomError("No Book Found",404);
     }
-    res.render("books/edit2", { book });
+    res.render("books/edit2", { book }); // else render the form
   } catch (err) {
-    next(err);
+    next(err); // catch the error and call the error handler middleware
   }
 });
 
+//PUT route for updating book, validate the book schema in re.params
 app.put("/books/:id", datavalidation_book, async (req, res) => {
   try {
     const { id } = req.params;
-    const book = await Book.findByIdAndUpdate(id, { ...req.body.book });
-    res.redirect(`/books/${book._id}`);
+    const book = await Book.findByIdAndUpdate(id, { ...req.body.book }); //find book by id and update
+    res.redirect(`/books/${book._id}`); // redirect to book show page
   } catch (err) {
-    next(err);
+    next(err); // catch the error and call the error handler middleware
   }
 });
 
+//DELETE route for deleting book 
 app.delete("/books/:id", async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params; // get id in req.params and delete by id
     await Book.findByIdAndDelete(id);
-    res.redirect("/books");
+    res.redirect("/books"); // redirect to books index page
   } catch (err) {
-    next(err);
+    next(err); // catch the error and call the error handler middleware
   }
 });
 
+//POST route for creating a book-review, validate schema first using middleware
 app.post("/books/:id/book-review", datavalidation_bookReview, async (req, res) => {
     try {
       const { id } = req.params;
-      const book = await Book.findById(id);
-      // console.log(req.body);
-      const review = new BookReview(req.body.review);
-      book.reviews.push(review);
-      // console.log(review);
-      await review.save();
-      await book.save();
-      res.redirect(`/books/${book._id}`);
+      const book = await Book.findById(id); // find the book by id
+      const review = new BookReview(req.body.review);// create a book-review object
+      book.reviews.push(review); // add to reviews array of the book
+      await review.save(); // save the review
+      await book.save(); //save the book after update
+      res.redirect(`/books/${book._id}`); //redirect to book shaow page
     } catch (err) {
-      next(err);
+      next(err); // catch the error and call the error handler middleware
     }
   }
 );
 
+//DELETE route for book-review
 app.delete("/books/:id/reviews/:reviewId", async (req, res) => {
   const { id, reviewId } = req.params;
-  await Book.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
-  await BookReview.findByIdAndDelete(reviewId);
-  res.redirect(`/books/${id}`);
+  await Book.findByIdAndUpdate(id, { $pull: { reviews: reviewId } }); // get book by it's id and get the book in array with it's id, remove it
+  await BookReview.findByIdAndDelete(reviewId); // find the book review and delete it in it's collection
+  res.redirect(`/books/${id}`); // redirect to book show page
 });
 
+// for all the routes other than these, show 404 page
 app.all('*', (req, res, next) => {
     next(new CustomError('Page Not Found', 404));
 });
+/*-------------------------------------------------------------------------------------------------------------*/
 
-
+/*------------------------------------ Error handler middleware -----------------------------------------------*/
+//error handler middleware
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
-    if (!err.message) err.message = "Something Went Wrong!"
-    res.status(statusCode).render('error', { err })
+    if (!err.message) err.message = "Something Went Wrong!" //default error message
+    res.status(statusCode).render('error', { err }) //render error page
 })
+/*-------------------------------------------------------------------------------------------------------------*/
 
+//lsiten for requests on port 300
 app.listen(3000, () => {
   console.log("listening on port 3000");
 });

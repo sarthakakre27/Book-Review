@@ -1,19 +1,21 @@
-<nav id="main_nav" class="navbar navbar-expand-lg navbar-dark bg-dark shadow py-3">
-  <div class="container d-flex justify-content-between align-items-center">
-    <a class="navbar-brand h1" href="/books">
-      <i class='bx bx-buildings bx-sm text-dark'></i>
-      <span class="text-light h2">Nerdy</span><span class="text-primary h2">Stan</span>
+<!-- bootsrap nav component -->
+<nav id="main_nav" class="navbar navbar-expand-lg navbar-dark bg-dark shadow py-3"> <!-- dark navbar, shadowed, padded in y-dir -->
+  <div class="container d-flex justify-content-between align-items-center"> <!-- flex container to align items, justify between -->
+    <a class="navbar-brand h1" href="/books"> <!-- Brand title link -->
+      <span class="text-light h2 py-2">Nerdy</span><span class="text-primary h2 py-3">Stan</span> <!-- brand title white,blue color -->
     </a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false"
-      aria-label="Toggle navigation">
+    <!-- toggler button - hamburger icon -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
-      id="navbar-toggler-success">
-      <div class="flex-fill mx-xl-5 mb-2">
-        <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+    <!-- collapsable navbar -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- equal width flex fill elements -->
+      <div class="flex-fill mx-xl-5 mb-0">
+        <!-- unordered list with collapse text at start, otherwise links content-between -->
+        <ul class="navbar-nav text-start justify-content-between mx-xl-5">
+          <!-- list items with links for different pages and sections of the page -->
           <li class="nav-item">
             <a class="nav-link btn-outline-primary rounded px-3 py-2 h4" href="/">Home</a>
           </li>
