@@ -1,3 +1,4 @@
+/* Importing some font families from Google Fonts */
 @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap");
@@ -19,6 +20,8 @@
   box-sizing: border-box;
 }
 
+/* ------------------------------------Form Styling------------------------------ */
+/* Boday layout for form pages */
 body .book-form {
   /* background: url("https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2020/08/28/Pictures/_df443a94-e8dd-11ea-b931-a708c0ef05a7.jpg") */
   /* center center fixed no-repeat; */
@@ -36,6 +39,7 @@ body .book-form {
   padding: 40px;
 }
 
+/* Container attributes of the form */
 .book-form .container {
   background-color: #fafafa;
   border-radius: 5px;
@@ -46,6 +50,7 @@ body .book-form {
   padding: 0px;
 }
 
+/* Header with gradient coloring and its attribute */
 .header1 {
   border-bottom: 1px solid #f0f0f0;
   background-color: #7f53ac;
@@ -62,6 +67,7 @@ body .book-form {
   padding: 20px 20px;
 }
 
+/* Styling for individual form feilds */
 .form-control {
   border: 0px;
   margin-bottom: 10px;
@@ -70,11 +76,13 @@ body .book-form {
   background-color: #fafafa;
 }
 
+/* Styling form labels */
 .form-control label {
   display: inline-block;
   margin-bottom: 5px;
 }
 
+/* Styling input box */
 .form-control input {
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -85,6 +93,7 @@ body .book-form {
   width: 100%;
 }
 
+/* Styling textarea form */
 .form-control textarea {
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -97,32 +106,40 @@ body .book-form {
   height: 100px;
 }
 
+/* On click change border color to more dark */
 .form-control input:focus {
   outline: 0;
   border-color: #777;
 }
 
+/* On click change border color to more dark */
 .form-control textarea:focus {
   outline: 0;
   border-color: #777;
 }
 
+/* -------------------------------Form Validation Classes-------------------------- */
+/* If input of feild is valid then set its feild class to success */
 .form-control.success input {
   border-color: #2ecc71;
 }
 
+/* If input of feild is not valid then set its feild class to success */
 .form-control.error input {
   border-color: #e74c3c;
 }
 
+/* If input of feild is valid then set its feild class to success */
 .form-control.success textarea {
   border-color: #2ecc71;
 }
 
+/* If input of feild is not valid then set its feild class to success */
 .form-control.error textarea {
   border-color: #e74c3c;
 }
 
+/* By default icons for check-mark and error are not visible */
 .form-control i {
   visibility: hidden;
   position: absolute;
@@ -134,16 +151,19 @@ body .book-form {
   top: 87px;
 }
 
+/* On submission icon is visible */
 .form-control.success i.fa-check-circle {
   color: #2ecc71;
   visibility: visible;
 }
 
+/* On submission icon is visible */
 .form-control.error i.fa-exclamation-circle {
   color: #e74c3c;
   visibility: visible;
 }
 
+/* By default error message inside small tag isnot visible */
 .form-control small {
   color: #e74c3c;
   position: absolute;
@@ -151,11 +171,14 @@ body .book-form {
   left: 12px;
   visibility: hidden;
 }
+/* ------------------------------------------------------------------------------- */
 
+/* On submission error message becomes visible */
 .form-control.error small {
   visibility: visible;
 }
 
+/* Styling for form submission button */
 .form button {
   background-color: #7f53ac;
   background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
@@ -170,6 +193,7 @@ body .book-form {
   width: 100%;
 }
 
+/* Styling for form submission button */
 #book-btn {
   background-color: #7f53ac;
   background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
@@ -186,6 +210,7 @@ body .book-form {
   width: 80%;
 }
 
+/* Styling for go back to book page button */
 #back-to-book {
   display: block;
   border: 0px solid black;
@@ -199,7 +224,10 @@ body .book-form {
   border-radius: 4px;
   padding-top: 6px;
 }
+/* -------------------------------------------------------------------------- */
 
+/* ----------------------Gallery Book Images And Overlays-------------------- */
+/*Styling for book images  */
 .img-box {
   border-radius: 10px;
   justify-content: center;
@@ -209,24 +237,26 @@ body .book-form {
   transition: 0.5s;
 }
 
+/* On hover changing its scale */
 .img-box:hover {
   border-radius: 30px;
   transform: scale(1.15);
   z-index: 2;
 }
 
-/*fmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*/
+/*Styling for book images  */
 .image {
   position: relative;
   width: 400px;
 }
 
+/*Styling for book images  */
 .image__img {
   border-radius: 10px;
   display: block;
   width: 100%;
 }
-
+/*Styling for book overlays */
 .image__overlay {
   border-radius: 10px;
   position: absolute;
@@ -245,19 +275,23 @@ body .book-form {
   transition: opacity 0.25s;
 }
 
+/* When hovering overlay items move up */
 .image__overlay > * {
   transform: translateY(20px);
   transition: transform 0.25s;
 }
 
+/* When hovering overlay opacity is 1*/
 .image__overlay:hover {
   opacity: 1;
 }
 
+/* Overlay does not move up */
 .image__overlay:hover > * {
   transform: translateY(0);
 }
 
+/* Styling of overlay title */
 .image__title {
   font-size: 1em;
   border: 2px solid black;
@@ -267,6 +301,7 @@ body .book-form {
   margin: 20px;
 }
 
+/* Styling of overlay title */
 .image__title h3 {
   font-weight: bold;
   color: black;
@@ -278,13 +313,14 @@ body .book-form {
   font-size: 17px;
 }
 
+/* Styling of overlay author */
 .image__description {
   text-align: center;
   font-size: 16px;
   margin-top: 0.25em;
   color: black;
 }
-
+/* ----------------------------------------------------------------------------- */
 #more-books {
   font-size: 4rem;
   font-weight: lighter;
@@ -320,20 +356,28 @@ body .book-form {
   }
 }
 
+/*----------------------------Styling for input rating-------------------------- */
+/* Styling Input Rating */
 .rating {
   float: left;
   width: 300px;
 }
+
+/* Styling Input Rating Span*/
 .rating span {
   float: right;
   position: relative;
 }
+
+/* Positioning Input Rating */
 .rating span input {
   position: absolute;
   top: 0px;
   left: 0px;
   opacity: 0;
 }
+
+/* Styling Rating Label*/
 .rating span label {
   display: inline-block;
   width: 30px;
@@ -355,6 +399,7 @@ body .book-form {
   background: #fff;
 }
 
+/* Styling Star-Rating Id*/
 #star-rating {
   text-align: center;
   display: block;
@@ -362,18 +407,22 @@ body .book-form {
   margin-bottom: 0px;
 }
 
+/* Styling Rating Label*/
 .ratings label {
   margin: 10px;
 }
+/* ------------------------------------------------------------------------------------ */
 
-/*-----------------------------Footer--------------------------------------------------*/
+/*------------------------------------Footer--------------------------------------------*/
 
+/* Styling footer tags */
 .footer-dark {
   padding: 50px 0;
   color: #f0f9ff;
   background-color: #282d32;
 }
 
+/* Styling footer h3 tag*/
 .footer-dark h3 {
   margin-top: 0;
   margin-bottom: 12px;
@@ -381,6 +430,7 @@ body .book-form {
   font-size: 16px;
 }
 
+/* Styling footer h3 tag*/
 .footer-dark ul {
   padding: 0;
   list-style: none;
@@ -389,12 +439,14 @@ body .book-form {
   margin-bottom: 0;
 }
 
+/* Styling footer h3 tag*/
 .footer-dark ul a {
   color: inherit;
   text-decoration: none;
   opacity: 0.6;
 }
 
+/* Styling footer ul tag*/
 .footer-dark ul a:hover {
   opacity: 0.8;
 }
@@ -416,15 +468,18 @@ body .book-form {
   }
 }
 
+/* Styling footer p tag*/
 .footer-dark .item.text p {
   opacity: 0.6;
   margin-bottom: 0;
 }
 
+/* Styling footer socail icons*/
 .footer-dark .item.social {
   text-align: center;
 }
 
+/* Styling footer socail icons*/
 @media (max-width: 991px) {
   .footer-dark .item.social {
     text-align: center;
@@ -432,6 +487,7 @@ body .book-form {
   }
 }
 
+/* Styling footer socail icons*/
 .footer-dark .item.social > a {
   font-size: 20px;
   width: 36px;
@@ -446,10 +502,12 @@ body .book-form {
   opacity: 0.75;
 }
 
+/* Hover styling footer socail icons*/
 .footer-dark .item.social > a:hover {
   opacity: 0.9;
 }
 
+/* Styling footer copyright*/
 .footer-dark .copyright {
   text-align: center;
   padding-top: 24px;
@@ -457,8 +515,9 @@ body .book-form {
   font-size: 13px;
   margin-bottom: 0;
 }
+/*-------------------------------------------------------------------------------------*/
 
-/*-------------------display star-------------------------------------*/
+/*------------------------------------display star-------------------------------------*/
 .top-star {
   width: 100px;
   height: 100px;
@@ -466,6 +525,7 @@ body .book-form {
   display: block;
 }
 
+/* Styling star and star span */
 span.stars,
 span.stars span {
   display: block;
@@ -475,33 +535,31 @@ span.stars span {
   background-size: 40px 40px;
 }
 
+/* Setting Star Icon */
 span.stars span {
   background-position: 0 0;
   background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/747/star.svg);
 }
 
+/* Setting star width for image overlay */
 .display-stars-overlay span.stars span {
   background-size: 40px 25px;
 }
 
+/* Styling padding for star overlay */
 .display-stars-overlay {
   padding-top: 70px;
 }
+/*----------------------------------------------------------------------------------------*/
 
+/* ---------------------------------Additional Stylings--------------------------------- */
 .font-start {
   justify-content: start;
 }
 
+/* Show page image shadow styling */
 #target-img {
   box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.3);
-}
-
-#target-img img {
-  border: 0px;
-}
-
-.small-star-inner {
-  padding-right: 50px;
 }
 
 .Review-Title {
@@ -511,3 +569,4 @@ span.stars span {
 .progress {
   height: 8px;
 }
+/* ------------------------------------------------------------------------------------- */
