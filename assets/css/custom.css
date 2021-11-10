@@ -279,6 +279,7 @@ body .book-form {
 }
 
 .image__description {
+  text-align: center;
   font-size: 16px;
   margin-top: 0.25em;
   color: black;
@@ -458,26 +459,33 @@ body .book-form {
 }
 
 /*-------------------display star-------------------------------------*/
-.display-star-rating .top-star {
+.top-star {
   width: 100px;
   height: 100px;
   margin: 0 auto;
   display: block;
 }
 
-.display-star-rating span.stars,
+span.stars,
 span.stars span {
   display: block;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/747/star-o-white.svg)
-    0 0 repeat-x;
-  width: 100px; /* width of a star multiplied by 5 */
+  background: 0 0 repeat-x;
+  width: 200px; /* width of a star multiplied by 5 */
   height: 40px; /* the height of the star */
   background-size: 40px 40px;
 }
 
-.display-star-rating span.stars span {
+span.stars span {
   background-position: 0 0;
   background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/747/star.svg);
+}
+
+.display-stars-overlay span.stars span {
+  background-size: 40px 25px;
+}
+
+.display-stars-overlay {
+  padding-top: 70px;
 }
 
 .font-start {
