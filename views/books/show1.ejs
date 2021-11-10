@@ -6,21 +6,26 @@
         <div class="row justify-content-start pb-4">
             <div class="col-lg-6">
                 <div id="templatemo-slide-link-target" class="card mb-3" style="width: 500px;">
-                    <img class="border rounded" src="<%= book.image %> " alt="Card image cap" height="700px" width="500px">
+                    <img class="border rounded border-0" src="<%= book.image %> " alt="Card image cap" height="700px" width="500px">
                 </div>
             </div>
             <div class="col-lg-6 align-self-center">
                 <section class="bg-white py-3">
                     <div class="container my-2">
             
-                        <h1 class="creative-heading h2 pb-3">Rating Statistics</h1>
-                        <h1 class="creative-heading h3 pb-3 text-muted">Average Rating : <% if(avg_rating){ %>
+                        <h1 class="creative-heading h2 pb-3 font-start">Rating Statistics</h1>
+                        <h1 class="creative-heading h3 pb-3 text-muted font-start">Average Rating : <% if(avg_rating){ %>
                             <%= avg_rating %> 
                         <% }else{ %> 
                             0
                         <% } %> 
                         </h1>
-                        <h1 class="creative-heading h3 pb-3 text-muted">Total Ratings : <%= book.reviews.length %> </h1>
+                        <% if(avg_rating){ %>
+                            <div class="display-star-rating">
+                                <p class="text-center"><span class="stars"><%= avg_rating %> </span></p>
+                            </div>
+                        <% } %>
+                        <h1 class="creative-heading h3 pb-3 text-muted font-start">Total Ratings : <%= book.reviews.length %> </h1>
             
                         <div class="creative-content row py-3">
                             <div class="creative-progress col-md-7">
@@ -247,22 +252,43 @@
 
         <div class="row pb-0">
             <div class="worksingle-comment-footer col-lg-8 m-auto">
-                <h4 class="h5">Leave Your Review</h4>
-                <form class="col-md-12 m-auto" method="POST" action="/books/<%=book._id%>/book-review" role="form">
+                <h4 class="h5 Review-Title">Leave Your Review</h4>
+                <form class="col-md-12 m-auto" id="form2" method="POST" action="/books/<%=book._id%>/book-review" role="form">
 
                     <div class="form-group">
-                        <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputmessage">Your Comment</label>
-                        <textarea class="form-control form-control-lg light-300" id="inputmessage" name="review[content]" placeholder="Your Comment" rows="3"></textarea>
+                        <div class="form-control">
+                            <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputmessage">Your Comment</label>
+                            <textarea class="form-control form-control-lg light-300" id="inputmessage" name="review[content]" placeholder="Your Comment" rows="3"></textarea>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
                     </div>
 
                     <div class="row py-4">
                         <div class="col-lg-6">
-                            <label class="pb-2 light-300" for="inputname">Your UserName</label>
-                            <input type="text" class="form-control form-control-lg light-300" id="inputname" name="review[username]" placeholder="UserName">
+                                <div class="form-control">
+                                <label class="pb-2 light-300" for="inputname">Your UserName</label>
+                                <input type="text" class="form-control form-control-lg light-300" id="inputname" name="review[username]" placeholder="UserName">
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
                         </div>
-                        <div class="col-lg-6">
-                            <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputemail">Rating</label>
-                            <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
+                        <div class="col-lg-6 ratings">
+                            <label class="pb-2 pt-sm-0 pt-4 light-300" id="star-rating" for="inputemail">Rating</label>
+                            <div class="rating">
+                                <span><input type="radio" name="review[rating]" id="str5" value="5"><label for="str5"><i class="fas fa-star"></i>
+                                </label></span>
+                                <span><input type="radio" name="review[rating]" id="str4" value="4"><label for="str4"><i class="fas fa-star"></i>
+                                </label></span>
+                                <span><input type="radio" name="review[rating]" id="str3" value="3"><label for="str3"><i class="fas fa-star"></i>
+                                </label></span>
+                                <span><input type="radio" name="review[rating]" id="str2" value="2"><label for="str2"><i class="fas fa-star"></i>
+                                </label></span>
+                                <span><input type="radio" name="review[rating]" id="str1" value="1"><label for="str1"><i class="fas fa-star"></i>
+                                </label></span>
+                            </div>
                         </div>
                     </div>
 
