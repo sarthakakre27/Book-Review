@@ -23,8 +23,8 @@
 /* ------------------------------------Form Styling------------------------------ */
 /* Boday layout for form pages */
 body .book-form {
-  /* background: url("https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2020/08/28/Pictures/_df443a94-e8dd-11ea-b931-a708c0ef05a7.jpg") */
-  /* center center fixed no-repeat; */
+  background: url("https://www.teahub.io/photos/full/43-435347_1920x1080-wallpaper-purple-blue-gradient-linear-light-light.jpg")
+    center center fixed no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
