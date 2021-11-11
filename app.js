@@ -9,7 +9,6 @@ const BookReview = require("./models/bookReview"); //BookReview model in our dat
 const joi = require("joi"); //for server side validations of the models
 const { bookSchemaCheck, bookReviewSchemaCheck } = require("./serverSidevalidation"); //requiring the validation schemas
 const CustomError = require("./utils/CustomError"); //for throwing our Custom Error
-const { Router } = require("express");
 /*-------------------------------------------------------------------------------------------------------------*/
 
 /*------------------------------- Connect to database----------------------------------------------------------*/
