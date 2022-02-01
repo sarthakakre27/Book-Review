@@ -13,3 +13,4 @@ package-lock.json
 /assets/js/isotope.pkgd.js
 /assets/js/jquery.min.js
 /views/books/old/
+.env

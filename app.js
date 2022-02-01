@@ -1,4 +1,5 @@
 /*------------------------importing all the modules that are required for backend------------------------------*/
+require('dotenv').config();
 const express = require("express"); //main framework for rendering, routing, etc.
 const path = require("path"); //to join path of the file with it's base location
 const ejsMate = require("ejs-mate"); //
@@ -9,10 +10,11 @@ const BookReview = require("./models/bookReview"); //BookReview model in our dat
 const joi = require("joi"); //for server side validations of the models
 const { bookSchemaCheck, bookReviewSchemaCheck } = require("./serverSidevalidation"); //requiring the validation schemas
 const CustomError = require("./utils/CustomError"); //for throwing our Custom Error
+const port = process.env.PORT || 3000
 /*-------------------------------------------------------------------------------------------------------------*/
 
 /*------------------------------- Connect to database----------------------------------------------------------*/
-mongoose.connect("mongodb://localhost:27017/book-review"); //connecting to database
+mongoose.connect(process.env.DATABASE_URL); //connecting to database
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:")); //on db connection error print error message
 db.once("open", () => {
@@ -227,6 +229,6 @@ app.use((err, req, res, next) => {
 /*-------------------------------------------------------------------------------------------------------------*/
 
 //lsiten for requests on port 300
-app.listen(3000, () => {
-  console.log("listening on port 3000");
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`listening on port ${process.env.PORT ? process.env.PORT : 3000}`);
 });
